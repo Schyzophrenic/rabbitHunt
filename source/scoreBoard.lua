@@ -14,7 +14,6 @@ function ScoreBoard:init()
 end
 
 function ScoreBoard:incrementScore()
-    print(self.score)
     self.score += 1
     self:updateDisplay()
 end
