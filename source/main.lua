@@ -5,24 +5,22 @@ import "CoreLibs/timer"
 
 import "carrot"
 import "player"
+import "scoreBoard"
 
 local pd <const> = playdate
 local gfx <const> = pd.graphics
 
-function addCarrot()
-	Carrot(math.random(16, 400-16), math.random(16, 240-16))
+function resetGame()
 end
 
-function init()
-	-- we initialize the random seed for the carrot coords
-	math.randomseed(pd.getSecondsSinceEpoch())
-	-- We create the player
-	Player(pd.display.getWidth() / 2, pd.display.getHeight() / 2)
-	-- We add a carrot
-	addCarrot()
-end
+-- we initialize the random seed for the carrot coords
+math.randomseed(pd.getSecondsSinceEpoch())
 
-init()
+-- We create the main objects
+-- The scoreBoard should be accessible anywhere
+scoreBoard = ScoreBoard()
+local player = Player(pd.display.getWidth() / 2, pd.display.getHeight() / 2)
+local carrot = Carrot()
 
 function playdate.update()
 	gfx.sprite.update()
